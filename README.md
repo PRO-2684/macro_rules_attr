@@ -40,7 +40,8 @@ Finally, annotate your item with the `apply` attribute macro:
 #
 #[apply(the_macro)]
 struct One {}
-// Expands to `the_macro! { One {} }`
+// Expands to:
+the_macro! { struct One {} }
 ```
 
 Additional tokens are appended after the annotated item:
@@ -56,7 +57,8 @@ Additional tokens are appended after the annotated item:
 #
 #[apply(the_macro, "additional tokens", anything, (you - like))]
 struct Another {}
-// Expands to `the_macro! { Another {}, "additional tokens", anything, (you - like) }`
+// Expands to:
+the_macro! { struct Another {}, "additional tokens", anything, (you - like) }
 ```
 
 ## Example
@@ -100,14 +102,12 @@ macro_rules! make_hello {
 };
 }
 
-#[apply(make_hello)] // No additional arguments
+#[apply(make_hello)] // No additional tokens
 struct WithoutReplacement {}
-
 assert_eq!(WithoutReplacement::hello(), "Hello, WithoutReplacement!");
 
-#[apply(make_hello, "World")]
+#[apply(make_hello, "World")] // Additional tokens
 struct WithReplacement {}
-
 assert_eq!(WithReplacement::hello(), "Hello, World!");
 ```
 
