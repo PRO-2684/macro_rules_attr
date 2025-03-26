@@ -1,7 +1,9 @@
 #![doc = include_str!("../README.md")]
+#![no_std]
 
 #[cfg(feature = "log")]
 use log::debug;
+
 use proc_macro::{Delimiter, Group, Punct, Spacing, TokenStream, TokenTree};
 
 /// Emit a compile error with the given message
