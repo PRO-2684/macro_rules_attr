@@ -1,3 +1,5 @@
+#![doc = include_str!("../README.md")]
+
 #[cfg(feature = "log")]
 use log::debug;
 use proc_macro::{Delimiter, Group, Punct, Spacing, TokenStream, TokenTree};
@@ -14,7 +16,9 @@ macro_rules! error {
     }};
 }
 
-// apply: apply(my_macro), apply(my_macro, additional_args)
+/// Apply the given `macro_rules` to the annotated item, appending additional tokens if provided.
+///
+/// See the [crate-level documentation](crate) for more information.
 #[proc_macro_attribute]
 pub fn apply(attrs: TokenStream, input: TokenStream) -> TokenStream {
     // Parse `the_macro` and `macro_append` from `attrs`
@@ -35,6 +39,7 @@ pub fn apply(attrs: TokenStream, input: TokenStream) -> TokenStream {
     macro_rules_attr_impl(macro_name.into(), macro_append, input)
 }
 
+/// Wrap the given `input` with given `macro_name`, appending `macro_append` at the end.
 fn macro_rules_attr_impl(
     macro_name: TokenStream,
     macro_append: TokenStream,
