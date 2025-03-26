@@ -1,11 +1,11 @@
-use proc_macro::{Delimiter, Group, Punct, Spacing, TokenStream, TokenTree};
 #[cfg(feature = "log")]
 use log::debug;
+use proc_macro::{Delimiter, Group, Punct, Spacing, TokenStream, TokenTree};
 
 /// Emit a compile error with the given message
 macro_rules! error {
     ($msg:expr) => {{
-        let ts: ::proc_macro::TokenStream = ::core::stringify!{
+        let ts: ::proc_macro::TokenStream = ::core::stringify! {
             ::core::compile_error!($msg)
         }
         .parse()
@@ -35,7 +35,11 @@ pub fn apply(attrs: TokenStream, input: TokenStream) -> TokenStream {
     macro_rules_attr_impl(macro_name.into(), macro_append, input)
 }
 
-fn macro_rules_attr_impl(macro_name: TokenStream, macro_append: TokenStream, input: TokenStream) -> TokenStream {
+fn macro_rules_attr_impl(
+    macro_name: TokenStream,
+    macro_append: TokenStream,
+    input: TokenStream,
+) -> TokenStream {
     // Adapted from https://github.com/danielhenrymantilla/macro_rules_attribute-rs/blob/fa6f120939c7757dec23589e2687d5e8480fa1ce/src/proc_macro/mod.rs#L27-L53
 
     let mut ret = macro_name;
@@ -49,10 +53,7 @@ fn macro_rules_attr_impl(macro_name: TokenStream, macro_append: TokenStream, inp
     }
 
     // Wrap with `{}`
-    ret.extend([TokenTree::Group(Group::new(
-        Delimiter::Brace,
-        macro_input,
-    ))]);
+    ret.extend([TokenTree::Group(Group::new(Delimiter::Brace, macro_input))]);
 
     #[cfg(feature = "log")]
     debug!("ret: {ret:?}");
