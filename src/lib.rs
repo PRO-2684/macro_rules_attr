@@ -28,8 +28,11 @@ pub fn apply(attrs: TokenStream, input: TokenStream) -> TokenStream {
 
     let macro_name = match tts.next() {
         Some(tt) => tt,
-        None => return error!("Expected at least 1 token tree"),
+        None => return error!("Expected an identifier to `apply`, found nothing"),
     };
+    if !matches!(macro_name, TokenTree::Ident(_)) {
+        return error!("Expected an identifier to `apply`, found something else");
+    }
     #[cfg(feature = "log")]
     debug!("macro_name: {:?}", macro_name);
 
