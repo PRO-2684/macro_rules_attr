@@ -106,12 +106,17 @@ struct WithReplacement {}
 assert_eq!(WithReplacement::hello(), "Hello, World!");
 ```
 
+## Cargo Features
+
+- `log`: Enable logging with the `log` crate. (Requires `log` as a dependency)
+
 ## Comparison
 
 This crate is heavily inspired by [macro_rules_attribute](https://crates.io/crates/macro_rules_attribute), but differs in the following ways:
 
 - `macro_rules_attr` is more lightweight and has no dependencies by default.
-    - You can enable logging with the `log` feature.
+    - Less than 100 lines of code. (Excluding tests and documentation)
+    - You can enable logging with the `log` feature, which requires `log` as a dependency.
     - `paste` is required as a dev-dependency for the tests.
 - `macro_rules_attr` only has one attribute: `#[apply]`, while `macro_rules_attribute` provides more.
 - `macro_rules_attr` allows you to append any tokens after the annotated item, while `macro_rules_attribute` does not.
