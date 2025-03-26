@@ -1,0 +1,23 @@
+[package]
+name = "macro_rules_attr"
+version = "0.1.0"
+edition = "2024"
+include = ["/src", "LICENSE", "README.md"]
+repository = "https://github.com/PRO-2684/macro_rules_attr"
+license = "GPL-3.0-or-later"
+readme = "README.md"
+description = "#[apply] macro_rules! attribute"
+keywords = ["macro", "attribute", "decorator", "macro_rules", "proc-macro"]
+categories = ["rust-patterns", "development-tools::procedural-macro-helpers"]
+
+[features]
+default = []
+
+[lib]
+proc-macro = true
+
+[dependencies]
+log = { version = "0.4.27", optional = true } # Enable logging by `log` feature
+
+[dev-dependencies]
+paste = "1.0.15"
