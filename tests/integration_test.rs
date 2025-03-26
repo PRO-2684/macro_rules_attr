@@ -2,7 +2,6 @@ use macro_rules_attr::apply;
 use paste::paste;
 
 macro_rules! make_getters {
-// No prefix if not provided
 (
     $(#[$struct_meta:meta])*
     $struct_vis:vis

@@ -1,10 +1,10 @@
 [package]
 name = "macro_rules_attr"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 include = ["/src", "LICENSE", "README.md"]
 repository = "https://github.com/PRO-2684/macro_rules_attr"
-license = "GPL-3.0-or-later"
+license = "MIT"
 readme = "README.md"
 description = "Use declarative macros as proc_macro attributes. (`#[apply]` your `macro_rules!`)"
 keywords = ["macro", "attribute", "decorator", "macro_rules", "proc-macro"]
