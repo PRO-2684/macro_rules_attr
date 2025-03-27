@@ -1,5 +1,7 @@
 #![doc = include_str!("../README.md")]
 #![no_std]
+#![deny(missing_docs)]
+#![warn(clippy::all, clippy::nursery, clippy::cargo)]
 
 #[cfg(feature = "log")]
 use log::debug;
